@@ -1,0 +1,23 @@
+Pycasso structure:
+
+Primitive
+|   |
+|   +-- VAO
+|   +-- VBOs
+|   +-- Instances
+
+
+
+
+
+
+
+Session:
+  - Window
+  - Primitives:
+    - Shaders
+    - Programs:
+      - Program:
+        - VAO
+        - VBO
+        - instance indices (virtual-table)

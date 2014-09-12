@@ -1,0 +1,166 @@
+PYCASSO
+=======
+
+Cross-platform, hardware accelerated, constraint based GUI framework.
+
+Version information => file VERSION
+License information => file LICENSE
+
+For more information about the project, visit <http://www.pycasso.org>.
+
+
+
+--------------------------------------------------------------------------------
+DEPENDENCIES:
+
+    GLFW
+    GLEW
+    FreeType
+    FreeImage
+    linmath (already included)
+    cutils
+
+
+
+--------------------------------------------------------------------------------
+NAMING AND OTHER FORMATTING CONVENTIONS:
+
+    All lines need to be less than 80 characters wide. Use spaces instead of
+    tabs. The tab size should 4 spaces wide. Always include a single blank new
+    line at the end of a source file. Each function and struct definition should
+    be separated with 3 blank lines and the separator comment from each other.
+
+
+
+    /* INFO **     or     ## INFO ##
+    ** INFO */            ## INFO ##
+
+        Each source file should start with these INFO-comments, which will be
+        automatically expanded into a small information block about the project,
+        the actual source file and the license informations.
+
+
+
+    /* constant comment */
+    // temporary comment
+
+        Multiline comments are used to indicate constant comments (which are
+        explaining the functionality of the code or using comment-tags, etc.)
+        and one-liner comments are used to "comment-out" blocks of the code,
+        indicating later development of a feature or removing parts for testing
+        purposes.
+
+
+
+    _PYCASSO_DIR_SUBDIR_H_<pseudo-random number>_
+
+        Header guards should start and end with a single underscore. The first
+        word is the project name, the next words are the location of the file
+        which is followed by the file name, and the last letter is the extension
+        of the file, which is followed by a random number. All letters are
+        uppercase.
+
+
+
+    PYCASSO_CONSTANT
+    PYCASSO_MACRO(a, b)
+    CONSTANT
+    MACRO(a, b)
+
+        Global constants (enums also) and macros are started with the project
+        name, which is followed by their names. Local constants don't use the
+        project prefix. All letters are uppercase.
+
+
+
+    _pycasso_dir_subdir_func_name()
+    pycasso_dir_subdir_func_name()
+    pycasso_dir_subdir_Object_method_name()
+
+        Internal functions use the underscore and project name prefix, while
+        public functions use the project name only. It is followed by the
+        location of the file which is followed by the name of the function. If
+        the function is a method of an object, then the object name also appears
+        right after the location, but before the actual function name. All
+        letters are lowercase (except object names, which are started with a
+        capital letter) and words are separated with underscore.
+
+
+
+    pycasso_some_typedefed_struct
+    pycasso_SomeTypedefedStruct
+
+        Struct tags are started with the project name, followed by their names,
+        all lowecase letters, words are separated with underscore. Struct
+        typedef aliases are started with the lowercase project name, followed by
+        their name, words start with capital letters, followed by lowercases. If
+        a struct has both tag and alias, the two names should be identical,
+        except the formatting.
+
+
+
+    Exception_From_Some_Event:
+
+        Pycasso is using 'goto's very carefully, they are almost only accepted
+        in error checking blocks. That's why the 'label's conventions is to use
+        the 'Exception' prefix, spearate words with underscores and capitalised
+        each word.
+
+
+
+    /*----- Length: 80 -----*/
+    /*- - - Length: 80 - - -*/
+
+        Use solid line comments to separate definitions, or dashed line comments
+        if they are related to each other. (subtype, children object, etc.)
+
+
+
+    expression;  /* inline comment */
+
+        Inline comments and the content they are related to has to be separated
+        by at least 2 spaces.
+
+
+
+    #include <stdio.h>   /* printf() */
+    #include <stddef.h>  /* size_t */
+
+        The include directive is followed by two spaces and then the comment
+        which shows which parts of the module is used in the current file. If
+        there are too many parts have been used, regex notation is possible to
+        use (for exampleL: GL* to indicate everything start with GL is coming
+        from this module).
+
+
+
+    function_with_more_than_four_arguments(argument1,
+                         /* position x */  argument2,
+                         /* position y */  argument3,
+                              /* width */  argument4,
+                             /* height */  argument5,
+                        /* some option */  argument6);
+
+        Function calls with more than four arguments should be commented (just
+        like it is using key-word argument passing in other languages), and each
+        argument should be followed by a new line.
+
+
+
+--------------------------------------------------------------------------------
+LICENSE:
+
+Copyright (C) 2014 Peter Varo
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program, most likely a file in the root directory, called 'LICENSE'. If
+not, see <http://www.gnu.org/licenses>.

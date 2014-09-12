@@ -1,0 +1,481 @@
+<html>
+    <!--
+    Pycasso
+    Designed by Peter Varo
+    Copyright (C) 2013-2014
+    -->
+    <!--================================ HEAD ===============================-->
+    <head>
+        <title>{Title}</title>
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+        {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+
+        <!-- STYLE SHEET -->
+        <style type="text/css">
+@import url(http://fonts.googleapis.com/css?family=Varela);
+
+/* RESET: http://meyerweb.com/eric/tools/css/reset/ | v2.0b1 | 201101 */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,
+abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,
+strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,
+figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{
+margin:0;padding:0;border:0;outline:0;font-size:100%;font:inherit;vertical-align:
+baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
+section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{
+quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';
+content:none;}ins{text-decoration:none;}del{text-decoration:line-through;}table{
+border-collapse:collapse;border-spacing:0;}
+
+/* STYLE */
+body
+{
+    background: #FFF;
+    font-family: 'Varela', sans-serif;
+    font-size: 10pt;
+    text-align: justify;
+    color: #999;
+    line-height: 1.5;
+}
+
+a {text-decoration: none;}
+a:link {color: #5A9FD4;}
+a:visited {color: #5A9FD4;}
+
+a:hover, ::selection
+{
+    color: #306998;
+    background: #FFE873;
+}
+
+li
+{
+    margin-left: 40pt;
+    list-style-type: disc;
+    list-style-position: outside;
+}
+.chat > li
+{
+    margin-left: 0pt;
+    list-style-type: none;
+}
+
+.chat > li:nth-child(even)
+{
+    color: #666;
+}​
+
+p, li {padding-bottom: 10pt;}
+img {max-width: 100%;}
+#page {margin: 20pt;}
+
+#header
+{
+    background: url(http://f.cl.ly/items/35091t1w3Q3H3A2Q2D2S/pyoneer_logo.svg) no-repeat;
+    width:  384pt;
+    height: 134pt;
+    background-size: 384pt 134pt;
+    margin: auto;
+    padding-bottom: 40pt;
+}
+
+#menu
+{
+    display: block;
+    position: fixed;
+    top: 0pt;
+    right: 0pt;
+    z-index: 999;
+    padding: 20pt 10pt;
+}
+
+#footer
+{
+    font-size: 8pt;
+    margin: auto;
+    text-align: center;
+}
+
+.post
+{
+    border-top: 1pt solid #DDD;
+    padding-top: 10pt;
+    width: 650pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title
+{
+    font-size: 20pt;
+    padding-bottom: 10pt;
+}
+
+.datetime
+{
+    border-top: 1pt solid #EEE;
+    padding: 5pt 0pt;
+    font-size: 8pt;
+}
+
+.tags
+{
+    border-top: 1pt solid #EEE;
+    padding: 5pt 0pt 50pt;
+    font-size: 8pt;
+}
+
+.photo {text-align: center;}
+
+.name {font-style: bold;}
+.message {font-style: italic;}
+
+/* etc */
+.upper {text-transform: uppercase;}
+.lower {text-transform: lowercase;}
+.narrow
+{
+    width: 450pt;
+    margin: auto;
+}
+
+        </style>
+    </head>
+
+    <!--================================ BODY ===============================-->
+    <body>
+        <div id="page">
+
+            <div id="menu">
+                <a href="/archive">archive</a> |
+                <a href="https://github.com/petervaro">github</a> |
+                <a href="mailto:petervaro@sketchandprototype.com?Subject=pyoneer%20is%20awesome!">contact</a>
+            </div>
+
+            <!--=========================== TITLE ===========================-->
+            <div id="header"></div>
+
+            <!--========================== CONTENT ==========================-->
+            <div id="posts">
+            {block:Posts}
+
+                <!--======================= TEXT POSTS ======================-->
+                {block:Text}
+                <div class="post">
+                    <div class="narrow">
+
+                        {block:Title}
+                        <div class="title">{Title}</div>
+                        {/block:Title}
+
+                        {Body}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post text -->
+                {/block:Text}
+
+                <!--====================== PHOTO POSTS ======================-->
+                {block:Photo}
+                <div class="post">
+
+                    <div class="photo">
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                    </div>
+
+                    <div class="narrow">
+
+                        {block:Caption}
+                        <div class="caption">{Caption}</div>
+                        {/block:Caption}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post photo -->
+                {/block:Photo}
+
+                <!--===================== PANORAMA POSTS ====================-->
+                {block:Panorama}
+                <div class="post">
+
+                    {block:Photos}
+                    <div class="photo">
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                    </div>
+                    {/block:Photos}
+
+                    <div class="narrow">
+
+                        {block:Caption}
+                        <div class="caption">{Caption}</div>
+                        {/block:Caption}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post panorama -->
+                {/block:Panorama}
+
+                <!--===================== PHOTOSET POSTS ====================-->
+                {block:Photoset}
+                <div class="post">
+
+                    {block:Photos}
+                    <div class="photo">
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                    </div>
+                    {/block:Photos}
+
+                    <div class="narrow">
+
+                        {block:Caption}
+                        <div class="caption">{Caption}</div>
+                        {/block:Caption}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post photoset -->
+                {/block:Photoset}
+
+                <!--====================== QUOTE POSTS ======================-->
+                {block:Quote}
+                <div class="post">
+                    <div class="narrow">
+
+                        "{Quote}"
+
+                        {block:Source}
+                        <div class="source">{Source}</div>
+                        {/block:Source}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post quote -->
+                {/block:Quote}
+
+                <!--======================= LINK POSTS ======================-->
+                {block:Link}
+                <div class="post">
+                    <div class="narrow">
+
+                        <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                        {block:Description}
+                        <div class="description">{Description}</div>
+                        {/block:Description}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post link -->
+                {/block:Link}
+
+                <!--======================= CHAT POSTS ======================-->
+                {block:Chat}
+                <div class="post">
+                    <div class="narrow">
+
+                        {block:Title}
+                        <div class="title">{Title}</div>
+                        {/block:Title}
+
+                        <ul class="chat">
+                            {block:Lines}
+                            <li>
+                                {block:Label}
+                                <span class="upper name">{Label}</span>
+                                {/block:Label}
+
+                                <div class="message">{Line}</div>
+                            </li>
+                            {/block:Lines}
+                        </ul>
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post chat -->
+                {/block:Chat}
+
+                <!--====================== VIDEO POSTS ======================-->
+                {block:Video}
+                <div class="post">
+
+                    {Video-500}
+
+                    <div class="narrow">
+
+                        {block:Caption}
+                        <div class="caption">{Caption}</div>
+                        {/block:Caption}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post video -->
+                {/block:Video}
+
+                <!--======================= AUDIO POSTS ======================-->
+                {block:Audio}
+                <div class="post">
+
+                    {AudioEmbed}
+
+                    <div class="narrow">
+
+                        {block:Caption}
+                        <div class="caption">{Caption}</div>
+                        {/block:Caption}
+
+                        {block:Date}
+                        <div class="datetime upper">
+                            <a href="{Permalink}">permalink</a> |
+                            {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix}
+                            {Month} {Year}
+                        </div>
+                        {/block:Date}
+
+                        {block:HasTags}
+                        <div class="tags">
+                        {block:Tags}
+                            <a href="{TagURL}">#{Tag}</a>
+                        {/block:Tags}
+                        </div>
+                        {/block:HasTags}
+
+                    </div> <!-- narrow -->
+                </div> <!-- post audio -->
+                {/block:Audio}
+
+            {/block:Posts}
+            </div> <!-- posts -->
+
+            <!--=========================== FOOTER ==========================-->
+            <div class="narrow" id="footer">
+                Designed and written by
+                <a href="http://www.sketchandprototype.com">Peter Varo</a>
+                &copy;2013-2014
+            </div> <!-- footer -->
+
+        </div> <!-- page -->
+    </body>
+</html>

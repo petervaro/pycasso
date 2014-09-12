@@ -1,0 +1,58 @@
+
+/* Set projection matrix to perspective
+ * (this goes inside the main loop)
+ *
+ * #include <math.h>  // M_PI
+ */
+mat4x4_perspective(resources->projection_matrix,
+/* View angle   */ M_PI/3,
+/* Aspect ratio */ (float)viewport_width/(float)viewport_height,
+/* Near value   */ 0.f,
+/* Far value    */ 100.f);
+
+/* Good test colors
+ *
+ * #include "../include/allheaders.h"  // pycasso_color_str_to_rgb()
+ */
+
+float r1clrb[4],
+      r1clrs[4],
+      r2clrb[4],
+      r2clrs[4];
+
+pycasso_color_str_to_rgb("0088CC", r1clrb); // blueish
+pycasso_color_str_to_rgb("8800CC", r1clrs); // purpleish
+pycasso_color_str_to_rgb("00CC88", r2clrb); // greenish
+pycasso_color_str_to_rgb("CC8800", r2clrs); // yellowish
+
+/*
+
+As LIB:
+
+    pycasso.h          -- public header
+    pycasso.so         -- dynamic library  -> to use with C and Python
+
+As DEV:
+
+    pycasso_all.h      -- ONLY for quick dev purposes
+    pycasso_init.h     -- All the other standalone headers
+    pycasso_math.h
+
+*/
+
+/*
+
+python:
+
+    pycasso.map(FUNC, array1, array2)
+
+    # FUNC is an int ID of a pycasso C function
+    # array1, array2 is an in ID of a pycasso C array
+    # Roughly equalent to:
+    #
+    # for item in itertools.chain(array1, array2):
+    #     pycasso.FUNC(item)
+    #
+    # But it is happening at the C level!
+
+*/

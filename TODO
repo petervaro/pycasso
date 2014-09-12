@@ -1,0 +1,251 @@
+## INFO ########################################################################
+##                                                                            ##
+##                                  pycasso                                   ##
+##                                  =======                                   ##
+##                                                                            ##
+##    Cross-platform, hardware accelerated, constraint based GUI framework    ##
+##                       Version: 0.5.02.040 (20140911)                       ##
+##                                                                            ##
+##                                 File: TODO                                 ##
+##                                                                            ##
+##  For more information about the project, visit <http://www.pycasso.org>.   ##
+##                       Copyright (C) 2014 Peter Varo                        ##
+##                                                                            ##
+##  This program is free software: you can redistribute it and/or modify it   ##
+##   under the terms of the GNU General Public License as published by the    ##
+##       Free Software Foundation, either version 3 of the License, or        ##
+##                    (at your option) any later version.                     ##
+##                                                                            ##
+##    This program is distributed in the hope that it will be useful, but     ##
+##         WITHOUT ANY WARRANTY; without even the implied warranty of         ##
+##            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.            ##
+##            See the GNU General Public License for more details.            ##
+##                                                                            ##
+##     You should have received a copy of the GNU General Public License      ##
+##     along with this program, most likely a file in the root directory,     ##
+##        called 'LICENSE'. If not, see <http://www.gnu.org/licenses>.        ##
+##                                                                            ##
+######################################################################## INFO ##
+
+#---------------------------- 19 POSTS IN 10 FILES ----------------------------#
+TODO:
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 1
+  - file: include/linmath/linmath.h
+    line: 379
+    note: |
+          The negation of of can be spared by swapping the order of
+          *       operands in the following cross products in the right way. 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 2
+  - file: src/_DEL_init.c
+    line: 47
+    note: |
+          make size and title available for user!
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 3
+  - file: src/_DEL_init.c
+    line: 139
+    note: |
+          use label naming conventions here
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 4
+  - file: depend.py
+    line: 46
+    note: |
+          collect all headers and arrange them like this:
+          
+          some.o: dir/header1 dir/dir/header2
+          dir/header1: dir/header1.h
+          dir/dir/header2: dir/dir/header2.h
+          
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 5
+  - file: include/utils/_DEL_fps.h
+    line: 35
+    note: |
+          At the moment in a single scope only the first appearence of
+          these functions will work. NOTE: If you want to use both printfps
+          and getfps at the same time, use the getfps function only, and pass
+          a getter function which can also implement the printing functionality
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 6
+  - file: shaders/fragment/fill_linear_gradient.fs
+    line: 33
+    note: |
+          make variable count of stops and colors
+          http://stackoverflow.com/questions/8099979/glsl-c-arrays-of-uniforms
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 7
+  - file: src/_DEL_window.c
+    line: 96
+    note: |
+          make background color and blending available for user
+          float clear_color[3];
+          pycasso_color_str_to_rgb("000000", clear_color);
+          glClearColor(clear_color[0], clear_color[1], clear_color[2], 1.f);
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 8
+  - file: src/session.c
+    line: 46
+    note: |
+          Consider, if some sort of encapsulation needed in control.c:
+          inside pycasso_session_run() there are GL functions.. is it good or bad?
+          Does it make harder to switch between the different windowing libs (eg: GLFW)? 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 9
+  - file: src/session.c
+    line: 49
+    note: |
+          fix sys_grid.fs + sys_grid.vs deviation on resizing 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 10
+  - file: src/session.c
+    line: 50
+    note: |
+          move shader lists from init.c -> shader.h 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 11
+  - file: src/session.c
+    line: 51
+    note: |
+          REFACTOR debug.h 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 12
+  - file: src/session.c
+    line: 52
+    note: |
+          data types: System  : Window -> Region -> Layout -> Constraint
+                      Geometry: Surface, Curve, Text 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 13
+  - file: src/session.c
+    line: 87
+    note: |
+          initialise FreeImage here ... 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 14
+  - file: src/session.c
+    line: 88
+    note: |
+          initialise FreeType here ... 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 15
+  - file: src/session.c
+    line: 127
+    note: |
+          set this background color somewhere...
+          if it set => remove GLEW header from this file !!! 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 16
+  - file: src/window.c
+    line: 216
+    note: |
+          this is very expensive -> check if window was
+          created successfully, and in this function only
+          ask the GLFWwindow if it needs to be closed or not 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 17
+  - file: src/geo/rectangle.c
+    line: 73
+    note: |
+          the number of properties and their component counts are already
+          stored in their shader-properties (as inputs), so when the bit-mask
+          is passed, the values are already have the kind of information it
+          needs to "unpack" the passed property values (offset and color in
+          this case). If it were python, this would probably be a dict
+          instead of the bit-mask, the key would be the shader ID, and the
+          values would be the actual values of the properties of the inputs
+          of the given shadow. Design a better data-flow here !!! 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 18
+  - file: src/shader/program.c
+    line: 318
+    note: |
+          Index is needed because of the caller is a map() function on
+          a DynamicArray which stores all the programs => change the order in
+          CUTILS, so that it could be used as a _Generic interface (first
+          argument based selection) 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 19
+  - file: src/shader/program.c
+    line: 327
+    note: |
+          visual feedback => draw something to indicate the error 
+
+
+
+#----------------------------- 1 POSTS IN 1 FILES -----------------------------#
+HACK:
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 1
+  - file: src/shader/program.c
+    line: 294
+    note: |
+          0 is for arche vertices 
+
+
+
+#----------------------------- 4 POSTS IN 4 FILES -----------------------------#
+NOTE:
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 1
+  - file: include/linmath/linmath.h
+    line: 349
+    note: |
+          Degrees are an unhandy unit to work with.
+          * linmath.h uses radians for everything! 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 2
+  - file: include/_TMP_cshm.h
+    line: 33
+    note: |
+          TEMPORARY MACROS to work with the WIP static hash map object 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 3
+  - file: src/geo/rectangle.c
+    line: 91
+    note: |
+          Probably the whole shader/inputs/properties/values should be a
+          single packet, something like:
+          
+          typedef struct
+          {
+              ... shader_id;
+              size_t property_count;
+              struct
+              {
+                  ... property_id;
+                  size_t component_count;
+                  float values[];
+              } properties[];
+          } ShaderPacket; 
+
+  #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+  # 4
+  - file: src/shader/primitives/rectangle.c
+    line: 131
+    note: |
+          This is for test purpose only 
+
+
